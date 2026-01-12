@@ -1094,9 +1094,9 @@ section {
     color: #fbbf24 !important;
 }
 
-/* ===== Adjusted Hero for Banner ===== */
+/* ===== Hero padding - banner removed ===== */
 .hero {
-    padding-top: 160px;
+    padding-top: 120px;
 }
 
 .footer-links a:hover {
