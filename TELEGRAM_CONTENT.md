@@ -42,7 +42,7 @@ That's it. No more, no less.
 
 🌐 Website: silvercoinking.com
 🐦 Twitter: @SilverCoinKing
-📊 Chart: [DEXSCREENER URL]
+📊 Chart: https://dexscreener.com/solana/gtacndgomwxkntu8g3soechpm8b9z2497ztxlug6wjbt
 💰 Pump.fun: https://pump.fun/coin/FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -264,6 +264,7 @@ Website | Twitter | Rules in pinned message
 /website - Official links
 /rules - Community rules
 ```
+
 
 
 
