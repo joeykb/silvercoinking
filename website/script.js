@@ -101,8 +101,8 @@ function updatePriceDisplay(data) {
         const ratio = (data.goldPrice / data.price).toFixed(1);
         ratioEl.textContent = `${ratio}:1`;
     } else if (ratioEl && data.price) {
-        // Estimate ratio using ~$2650 gold if we don't have gold price
-        const estimatedRatio = (2650 / data.price).toFixed(1);
+        // Estimate ratio using current approximate gold price (~$4500 in 2026)
+        const estimatedRatio = (4500 / data.price).toFixed(1);
         ratioEl.textContent = `~${estimatedRatio}:1`;
     }
 
@@ -114,9 +114,9 @@ function updatePriceDisplay(data) {
         lowEl.textContent = `$${(data.price * 0.98).toFixed(2)}`;
     }
 
-    // YTD placeholder
+    // YTD - not available from free APIs
     if (ytdEl) {
-        ytdEl.textContent = 'See chart';
+        ytdEl.textContent = 'N/A';
     }
 }
 
