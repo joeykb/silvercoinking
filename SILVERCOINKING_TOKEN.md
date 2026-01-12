@@ -65,12 +65,13 @@ SilverCoinKing is a **community memecoin** for silver market enthusiasts. It has
 ## Social Media
 
 - Twitter/X: @SilverCoinKing
-- Telegram: t.me/SilverCoinKing
+- Telegram: t.me/silvercoinking
 - Website: silvercoinking.com
 
 ---
 
 *Created: January 12, 2026*
+
 
 
 

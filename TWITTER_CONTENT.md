@@ -181,7 +181,7 @@ The token is just a community badge.
 If you understand all that and still want to join:
 
 • Website: silvercoinking.com
-• Telegram: t.me/SilverCoinKing
+• Telegram: t.me/silvercoinking
 
 ⚠️ Only participate with funds you can afford to lose entirely.
 
@@ -224,6 +224,7 @@ Never imply:
 - That $SVCK is backed by anything
 
 Always include disclaimers about speculative nature.
+
 
 
 
