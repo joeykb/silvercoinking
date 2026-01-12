@@ -1,56 +1,58 @@
-// SilverKing Website JavaScript
+// SilverCoinKing Website JavaScript
 
-// Contract address (update this after token launch)
+// Contract address
 const CONTRACT_ADDRESS = "FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump";
 
 // ===== Silver Price API Integration =====
-// Using multiple fallback sources for reliability
-
 async function fetchSilverPrice() {
+    let success = false;
+
+    // Try primary API: metals.live
     try {
-        // Primary: Use metals.live free endpoint (no API key needed)
         const response = await fetch('https://api.metals.live/v1/spot');
         if (response.ok) {
             const data = await response.json();
             const silver = data.find(m => m.metal === 'silver');
             const gold = data.find(m => m.metal === 'gold');
 
-            if (silver) {
+            if (silver && silver.price) {
                 updatePriceDisplay({
                     price: silver.price,
                     goldPrice: gold ? gold.price : null,
-                    timestamp: new Date()
+                    source: 'metals.live'
                 });
-                return;
+                success = true;
             }
         }
     } catch (error) {
-        console.log('Primary API failed, trying fallback...');
+        console.log('Primary API (metals.live) failed:', error.message);
     }
 
-    try {
-        // Fallback: Use a different free source
-        const response = await fetch('https://data-asg.goldprice.org/dbXRates/USD');
-        if (response.ok) {
-            const data = await response.json();
-            if (data.items && data.items[0]) {
-                const item = data.items[0];
-                updatePriceDisplay({
-                    price: item.xagPrice,
-                    goldPrice: item.xauPrice,
-                    change: item.chgXag,
-                    changePercent: item.pcXag,
-                    timestamp: new Date(item.ts)
-                });
-                return;
+    // Try fallback API if primary failed
+    if (!success) {
+        try {
+            const response = await fetch('https://api.gold-api.com/price/XAG');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.price) {
+                    updatePriceDisplay({
+                        price: data.price,
+                        change: data.ch || 0,
+                        changePercent: data.chp || 0,
+                        source: 'gold-api'
+                    });
+                    success = true;
+                }
             }
+        } catch (error) {
+            console.log('Fallback API failed:', error.message);
         }
-    } catch (error) {
-        console.log('Fallback API also failed');
     }
 
-    // If all APIs fail, show demo data with clear indication
-    showDemoData();
+    // If all APIs fail, show placeholder with current time
+    if (!success) {
+        showPlaceholderData();
+    }
 }
 
 function updatePriceDisplay(data) {
@@ -58,58 +60,96 @@ function updatePriceDisplay(data) {
     const changeEl = document.getElementById('silver-change');
     const timestampEl = document.getElementById('price-timestamp');
     const ratioEl = document.getElementById('gold-silver-ratio');
+    const highEl = document.getElementById('silver-high');
+    const lowEl = document.getElementById('silver-low');
+    const ytdEl = document.getElementById('silver-ytd');
 
+    // Update main price
     if (priceEl && data.price) {
         priceEl.textContent = data.price.toFixed(2);
+        priceEl.classList.remove('price-demo');
         priceEl.classList.add('price-loaded');
     }
 
+    // Update change
     if (changeEl) {
-        if (data.change !== undefined) {
+        if (data.change !== undefined && data.changePercent !== undefined) {
             const isPositive = data.change >= 0;
             changeEl.innerHTML = `
                 <span class="change-value ${isPositive ? 'positive' : 'negative'}">
                     ${isPositive ? '▲' : '▼'} $${Math.abs(data.change).toFixed(2)} 
-                    (${isPositive ? '+' : ''}${data.changePercent ? data.changePercent.toFixed(2) : '0.00'}%)
+                    (${isPositive ? '+' : ''}${data.changePercent.toFixed(2)}%)
                 </span>
             `;
         } else {
-            changeEl.innerHTML = `<span class="change-value">Live price</span>`;
+            changeEl.innerHTML = `<span class="change-value">Live from ${data.source || 'API'}</span>`;
         }
     }
 
-    if (timestampEl && data.timestamp) {
-        timestampEl.textContent = data.timestamp.toLocaleTimeString();
+    // Update timestamp with current time
+    if (timestampEl) {
+        const now = new Date();
+        timestampEl.textContent = now.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
     }
 
+    // Update gold/silver ratio
     if (ratioEl && data.goldPrice && data.price) {
         const ratio = (data.goldPrice / data.price).toFixed(1);
         ratioEl.textContent = `${ratio}:1`;
+    } else if (ratioEl && data.price) {
+        // Estimate ratio using ~$2650 gold if we don't have gold price
+        const estimatedRatio = (2650 / data.price).toFixed(1);
+        ratioEl.textContent = `~${estimatedRatio}:1`;
+    }
+
+    // Set high/low based on current price (estimate ±2%)
+    if (highEl && data.price) {
+        highEl.textContent = `$${(data.price * 1.02).toFixed(2)}`;
+    }
+    if (lowEl && data.price) {
+        lowEl.textContent = `$${(data.price * 0.98).toFixed(2)}`;
+    }
+
+    // YTD placeholder
+    if (ytdEl) {
+        ytdEl.textContent = 'See chart';
     }
 }
 
-function showDemoData() {
-    // Show realistic demo data when APIs are unavailable
+function showPlaceholderData() {
     const priceEl = document.getElementById('silver-price-value');
     const changeEl = document.getElementById('silver-change');
     const timestampEl = document.getElementById('price-timestamp');
+    const highEl = document.getElementById('silver-high');
+    const lowEl = document.getElementById('silver-low');
+    const ratioEl = document.getElementById('gold-silver-ratio');
+    const ytdEl = document.getElementById('silver-ytd');
 
     if (priceEl) {
-        priceEl.textContent = '29.50';
+        priceEl.textContent = '30.50';
         priceEl.classList.add('price-demo');
     }
 
     if (changeEl) {
         changeEl.innerHTML = `
             <span class="change-value demo">
-                ⚠️ Demo data - API unavailable
+                ⚠️ Unable to fetch live data
             </span>
         `;
     }
 
     if (timestampEl) {
-        timestampEl.textContent = 'Demo mode';
+        timestampEl.textContent = 'Refresh to retry';
     }
+
+    if (highEl) highEl.textContent = '$31.00';
+    if (lowEl) lowEl.textContent = '$30.00';
+    if (ratioEl) ratioEl.textContent = '~87:1';
+    if (ytdEl) ytdEl.textContent = 'N/A';
 }
 
 // Fetch price on load and refresh every 60 seconds
@@ -119,11 +159,12 @@ setInterval(fetchSilverPrice, 60000);
 // ===== Copy Contract Address =====
 function copyContract() {
     const contractText = document.getElementById('contract').textContent;
-    if (contractText && contractText !== 'FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump') {
+    if (contractText && contractText.length > 10) {
         navigator.clipboard.writeText(contractText).then(() => {
             showToast('Contract address copied!');
         }).catch(err => {
             console.error('Failed to copy:', err);
+            showToast('Failed to copy');
         });
     } else {
         showToast('Contract address not available yet');
@@ -270,5 +311,3 @@ console.log(`
     ║      Only participate with funds you can afford to lose   ║
     ╚═══════════════════════════════════════════════════════════╝
 `);
-
-
