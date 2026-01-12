@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilverCoinKing ($SVCK) - Community Token for Silver Enthusiasts</title>
+    <meta name="description"
+        content="SilverCoinKing ($SVCK) - A community token for silver market enthusiasts on Solana. NOT silver, NOT silver-backed. A memecoin for the silver stacking community.">
+    <meta name="keywords" content="SilverCoinKing, SVCK, Solana, cryptocurrency, silver, memecoin, community token">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SilverCoinKing ($SVCK) - Silver Enthusiast Community">
+    <meta property="og:description"
+        content="A community token for silver market enthusiasts. NOT silver-backed. Join the conversation.">
+    <meta property="og:image" content="assets/silvercoinking_logo.png">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SilverCoinKing ($SVCK)">
+    <meta name="twitter:description" content="Community token for silver enthusiasts on Solana. 👑">
+
+    <link rel="icon" type="image/png" href="assets/silvercoinking_logo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cinzel:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="silver-particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="assets/silvercoinking_logo.png" alt="SilverCoinKing Logo" class="logo-img">
+                <span>SilverCoinKing</span>
+            </a>
+            <div class="nav-links">
+                <a href="#silver-price">Silver Price</a>
+                <a href="#about">About</a>
+                <a href="#disclaimer">Disclaimer</a>
+                <a href="#community">Community</a>
+            </div>
+            <a href="#buy" class="nav-cta">Join Community</a>
+        </div>
+    </nav>
+
+    <!-- Important Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        <span class="disclaimer-icon">⚠️</span>
+        <span>$SVCK is a <strong>community memecoin</strong> — NOT silver, NOT silver-backed, NOT an investment in
+            silver. <a href="#disclaimer">Read full disclaimer</a></span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">👑</span>
+                <span>Community Token on Solana</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-gradient">SilverCoinKing</span>
+                <span class="title-ticker">$SVCK</span>
+            </h1>
+            <p class="hero-subtitle">
+                A community token for silver market enthusiasts. Connect with fellow silver stackers,
+                discuss the market, and be part of the conversation — all on Solana.
+            </p>
+            <div class="hero-warning">
+                <strong>⚠️ Important:</strong> This is a speculative memecoin with NO intrinsic value.
+                $SVCK does NOT represent ownership of silver or track silver prices.
+                Only participate with funds you can afford to lose entirely.
+            </div>
+            <div class="hero-buttons">
+                <a href="https://pump.fun" target="_blank" class="btn btn-primary">
+                    <span>Join on Pump.fun</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+                <a href="#about" class="btn btn-secondary">
+                    Learn More
+                </a>
+            </div>
+            <div class="contract-address">
+                <span class="contract-label">Contract Address:</span>
+                <code class="contract-code" id="contract">Coming Soon</code>
+                <button class="copy-btn" onclick="copyContract()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="coin-container">
+                <img src="assets/silvercoinking_logo.png" alt="SilverCoinKing Coin" class="hero-coin">
+                <div class="coin-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Silver Price Section -->
+    <section class="silver-price-section" id="silver-price">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Live Market Data</span>
+                <h2>Real Silver <span class="highlight">Spot Price</span></h2>
+                <p class="section-desc">Track the real silver market. Remember: $SVCK does NOT track this price — this is
+                    for informational purposes only.</p>
+            </div>
+            <div class="price-dashboard">
+                <div class="price-card main-price">
+                    <div class="price-header">
+                        <span class="price-label">Silver (XAG/USD)</span>
+                        <span class="price-source">Source: Market Data</span>
+                    </div>
+                    <div class="price-value">
+                        <span class="currency">$</span>
+                        <span class="amount" id="silver-price-value">--.-</span>
+                        <span class="unit">/oz</span>
+                    </div>
+                    <div class="price-change" id="silver-change">
+                        <span class="change-value">Loading...</span>
+                    </div>
+                    <div class="price-updated">
+                        Last updated: <span id="price-timestamp">--</span>
+                    </div>
+                </div>
+                <div class="price-info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">📊</div>
+                        <div class="info-content">
+                            <span class="info-label">24h High</span>
+                            <span class="info-value" id="silver-high">$--.--</span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📉</div>
+                        <div class="info-content">
+                            <span class="info-label">24h Low</span>
+                            <span class="info-value" id="silver-low">$--.--</span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🥈</div>
+                        <div class="info-content">
+                            <span class="info-label">Gold/Silver Ratio</span>
+                            <span class="info-value" id="gold-silver-ratio">--:1</span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📈</div>
+                        <div class="info-content">
+                            <span class="info-label">YTD Change</span>
+                            <span class="info-value" id="silver-ytd">--.-%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price-disclaimer">
+                <strong>⚠️ Reminder:</strong> $SVCK token price is completely independent of silver spot price.
+                This data is shown for educational purposes only. $SVCK is a memecoin, not a silver investment.
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What is SilverCoinKing?</span>
+                <h2>A Community, <span class="highlight">Not an Investment</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">💬</div>
+                    <h3>Community Hub</h3>
+                    <p>SilverCoinKing brings together silver market enthusiasts, stackers, and sound money believers.
+                        It's a social token for our community.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🚫</div>
+                    <h3>NOT Silver-Backed</h3>
+                    <p>$SVCK has NO backing, NO reserves, and NO connection to physical silver. It does not track silver
+                        prices in any way.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Transparent Purpose</h3>
+                    <p>We're upfront: This is a memecoin. Its value comes purely from community interest, not from any
+                        underlying asset.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Solana Powered</h3>
+                    <p>Built on Solana for fast, low-cost transactions. Fair launched on pump.fun with no presale or
+                        team allocation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="disclaimer-section" id="disclaimer">
+        <div class="container">
+            <div class="disclaimer-box">
+                <div class="disclaimer-header">
+                    <span class="disclaimer-title">⚠️ Important Disclaimer</span>
+                </div>
+                <div class="disclaimer-content">
+                    <h3>What $SVCK IS NOT:</h3>
+                    <ul>
+                        <li>❌ NOT silver or a silver-backed asset</li>
+                        <li>❌ NOT an investment in precious metals</li>
+                        <li>❌ NOT pegged to or tracking silver prices</li>
+                        <li>❌ NOT financial advice or a recommendation</li>
+                        <li>❌ NOT guaranteed to have any value</li>
+                    </ul>
+
+                    <h3>What $SVCK IS:</h3>
+                    <ul>
+                        <li>✅ A community memecoin on Solana</li>
+                        <li>✅ A social token for silver market enthusiasts</li>
+                        <li>✅ A speculative asset with no intrinsic value</li>
+                        <li>✅ A fair-launched token with no presale</li>
+                    </ul>
+
+                    <div class="risk-warning">
+                        <strong>🚨 Risk Warning:</strong>
+                        <p>Cryptocurrency investments are highly speculative and risky. You could lose 100% of your
+                            investment.
+                            Only participate with funds you can afford to lose entirely. This is not financial advice.
+                            Do your own research (DYOR) before making any investment decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Join the Conversation</span>
+                <h2>Silver Enthusiast <span class="highlight">Community</span></h2>
+                <p class="section-desc">Connect with fellow silver market watchers. Discuss trends, share insights, and
+                    be part of the conversation.</p>
+            </div>
+            <div class="social-grid">
+                <a href="#" class="social-card twitter">
+                    <div class="social-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </div>
+                    <span class="social-name">Twitter / X</span>
+                    <span class="social-handle">@SilverCoinKing</span>
+                </a>
+                <a href="#" class="social-card telegram">
+                    <div class="social-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                        </svg>
+                    </div>
+                    <span class="social-name">Telegram</span>
+                    <span class="social-handle">Community Chat</span>
+                </a>
+                <a href="https://pump.fun" target="_blank" class="social-card pumpfun">
+                    <div class="social-icon">🎰</div>
+                    <span class="social-name">Pump.fun</span>
+                    <span class="social-handle">Fair Launch</span>
+                </a>
+                <a href="https://axiom.trade" target="_blank" class="social-card axiom">
+                    <div class="social-icon">📊</div>
+                    <span class="social-name">Axiom</span>
+                    <span class="social-handle">Trade $SVCK</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="buy">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join the Silver Enthusiast Community</h2>
+                <p>Connect with fellow silver market watchers. Remember: This is a memecoin, not an investment.</p>
+                <a href="https://pump.fun" target="_blank" class="btn btn-primary btn-large">
+                    <span>Join on Pump.fun</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+                <p class="cta-disclaimer">⚠️ Only participate with funds you can afford to lose entirely.</p>
+            </div>
+            <div class="cta-crown">👑</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/silvercoinking_logo.png" alt="SilverCoinKing">
+                    <span>SilverCoinKing</span>
+                </div>
+                <p class="footer-disclaimer">
+                    <strong>⚠️ DISCLAIMER:</strong> $SVCK is a memecoin with NO intrinsic value or expectation of
+                    financial return.
+                    It is NOT silver, NOT silver-backed, and does NOT track silver prices. There is no formal team or
+                    roadmap guarantees.
+                    This is NOT financial advice. Cryptocurrency investments are highly speculative — you could lose
+                    100% of your investment.
+                    Only participate with funds you can afford to lose entirely. Always do your own research (DYOR).
+                </p>
+                <div class="footer-links">
+                    <a href="#">Twitter</a>
+                    <a href="#">Telegram</a>
+                    <a href="https://pump.fun">Pump.fun</a>
+                    <a href="#disclaimer">Disclaimer</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 SilverCoinKing Community. All rights reserved. This is a community project, not a registered
+                    company.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
