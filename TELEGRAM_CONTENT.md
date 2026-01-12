@@ -43,12 +43,12 @@ That's it. No more, no less.
 🌐 Website: silvercoinking.com
 🐦 Twitter: @SilverCoinKing
 📊 Chart: [DEXSCREENER URL]
-💰 Pump.fun: [PUMP.FUN URL]
+💰 Pump.fun: https://pump.fun/coin/FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📜 CONTRACT ADDRESS:
-[CONTRACT ADDRESS HERE]
+FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -186,7 +186,7 @@ Same community, wider access. 👑
 🚫 Anyone claiming $SVCK is "backed" or "pegged" is LYING
 
 The ONLY official contract:
-[CONTRACT ADDRESS]
+FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump
 
 If someone DMs you about $SVCK - it's a SCAM!
 
@@ -264,4 +264,6 @@ Website | Twitter | Rules in pinned message
 /website - Official links
 /rules - Community rules
 ```
+
+
 

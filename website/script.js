@@ -1,7 +1,7 @@
 // SilverKing Website JavaScript
 
 // Contract address (update this after token launch)
-const CONTRACT_ADDRESS = "Coming Soon";
+const CONTRACT_ADDRESS = "FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump";
 
 // ===== Silver Price API Integration =====
 // Using multiple fallback sources for reliability
@@ -119,7 +119,7 @@ setInterval(fetchSilverPrice, 60000);
 // ===== Copy Contract Address =====
 function copyContract() {
     const contractText = document.getElementById('contract').textContent;
-    if (contractText && contractText !== 'Coming Soon') {
+    if (contractText && contractText !== 'FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump') {
         navigator.clipboard.writeText(contractText).then(() => {
             showToast('Contract address copied!');
         }).catch(err => {
@@ -270,4 +270,5 @@ console.log(`
     ║      Only participate with funds you can afford to lose   ║
     ╚═══════════════════════════════════════════════════════════╝
 `);
+
 

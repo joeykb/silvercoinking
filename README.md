@@ -34,7 +34,7 @@ Open `website/index.html` in your browser.
 
 - Website: [silvercoinking.com](https://silvercoinking.com)
 - Twitter: [@SilverCoinKing](https://twitter.com/SilverCoinKing)
-- Telegram: Coming soon
+- Telegram: FyP7vp9uKfULi7JAV96Q8YHZWuoJLUWr4bhpUbufpump
 
 ## ⚠️ Risk Warning
 
@@ -43,3 +43,5 @@ Cryptocurrency investments are highly speculative. You could lose 100% of your i
 ---
 
 © 2026 SilverCoinKing Community
+
+
